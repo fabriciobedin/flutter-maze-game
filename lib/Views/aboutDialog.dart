@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class AboutMazeBallDialog extends StatelessWidget {
   @override
@@ -24,29 +23,9 @@ class AboutMazeBallDialog extends StatelessWidget {
           SizedBox(
             height: 15,
           ),
-          InkWell(
-            child: Text(
-              "GitHub",
-              style: TextStyle(
-                color: Colors.blue,
-                decoration: TextDecoration.underline,
-              ),
-            ),
-            onTap: () => launch("https://github.com/Dev-Owl/Mazeball"),
-          ),
           SizedBox(
             height: 15,
           ),
-          InkWell(
-            child: Text(
-              "How-to",
-              style: TextStyle(
-                color: Colors.blue,
-                decoration: TextDecoration.underline,
-              ),
-            ),
-            onTap: () => launch("https://medium.com/@c.muehle18"),
-          )
         ],
       ),
     );

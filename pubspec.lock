@@ -308,6 +308,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.2.15"
+  theseus:
+    dependency: "direct main"
+    description:
+      name: theseus
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.0"
   tiled:
     dependency: transitive
     description:

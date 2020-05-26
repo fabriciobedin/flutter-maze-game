@@ -1,14 +1,15 @@
 import 'dart:ui';
-import 'package:mazeball/Views/base/baseView.dart';
-import 'package:mazeball/Views/mainMenuBackground.dart';
-import 'package:mazeball/Views/optionBackground.dart';
-import 'package:mazeball/Views/playingView.dart';
-import 'package:mazeball/game.dart';
+import 'package:fluttermazegame/Views/base/baseView.dart';
+import 'package:fluttermazegame/Views/mainMenuBackground.dart';
+import 'package:fluttermazegame/Views/optionBackground.dart';
+import 'package:fluttermazegame/Views/playingView.dart';
+import 'package:fluttermazegame/game.dart';
+
 import 'base/viewSwtichMessage.dart';
 
 class ViewManager {
   List<BaseView> views;
-  final MazeBallGame game;
+  final FlutterMazeGame game;
   BaseView get activeView =>
       views.firstWhere((view) => view.active, orElse: () {
         return null;

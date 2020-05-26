@@ -4,21 +4,21 @@ import 'package:flame/flame.dart';
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:mazeball/Views/base/baseView.dart';
-import 'package:mazeball/Views/base/viewSwtichMessage.dart';
-import 'package:mazeball/Views/viewManager.dart';
+import 'package:fluttermazegame/Views/base/baseView.dart';
+import 'package:fluttermazegame/Views/base/viewSwtichMessage.dart';
+import 'package:fluttermazegame/Views/viewManager.dart';
 import 'package:wakelock/wakelock.dart';
 
-class FlutterAppGame extends StatefulWidget {
+class GameWidget extends StatefulWidget {
   @override
-  _FlutterAppGameState createState() => _FlutterAppGameState();
+  _GameWidgetState createState() => _GameWidgetState();
 }
 
-class _FlutterAppGameState extends State<FlutterAppGame> {
-  MazeBallGame game;
+class _GameWidgetState extends State<GameWidget> {
+  FlutterMazeGame game;
 
-  _FlutterAppGameState() {
-    game = new MazeBallGame();
+  _GameWidgetState() {
+    game = new FlutterMazeGame();
   }
 
   @override
@@ -39,7 +39,7 @@ class _FlutterAppGameState extends State<FlutterAppGame> {
   }
 }
 
-class MazeBallGame extends Game {
+class FlutterMazeGame extends Game {
   //Needed for Box2D
   static const int WORLD_POOL_SIZE = 100;
   static const int WORLD_POOL_CONTAINER_SIZE = 10;
@@ -60,7 +60,7 @@ class MazeBallGame extends Game {
   bool pauseGame = false;
   bool blockResize = false;
 
-  MazeBallGame({GameView startView = GameView.Playing}) {
+  FlutterMazeGame({GameView startView = GameView.Playing}) {
     world = new World.withPool(
         _gravity, DefaultWorldPool(WORLD_POOL_SIZE, WORLD_POOL_CONTAINER_SIZE));
     initialize(startView: startView);

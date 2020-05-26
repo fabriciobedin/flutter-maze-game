@@ -1,11 +1,11 @@
 import 'dart:ui';
 
 import 'package:box2d_flame/box2d.dart';
-import 'package:mazeball/Elements/ball.dart';
-import 'package:mazeball/Elements/wall.dart';
-import 'package:mazeball/Views/base/viewSwtichMessage.dart';
-import 'package:mazeball/Views/viewManager.dart';
-import 'package:mazeball/helper.dart';
+import 'package:fluttermazegame/Elements/ball.dart';
+import 'package:fluttermazegame/Elements/wall.dart';
+import 'package:fluttermazegame/Views/base/viewSwtichMessage.dart';
+import 'package:fluttermazegame/Views/viewManager.dart';
+import 'package:fluttermazegame/helper.dart';
 
 import 'base/baseView.dart';
 

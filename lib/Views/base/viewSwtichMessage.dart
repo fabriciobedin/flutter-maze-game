@@ -1,4 +1,4 @@
-import 'package:mazeball/Views/base/baseView.dart';
+import 'package:fluttermazegame/Views/base/baseView.dart';
 
 class ViewSwitchMessage{
 

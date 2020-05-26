@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
-import 'package:mazeball/Views/base/viewSwtichMessage.dart';
-import 'package:mazeball/Views/viewManager.dart';
+import 'package:fluttermazegame/Views/base/viewSwtichMessage.dart';
+import 'package:fluttermazegame/Views/viewManager.dart';
 
 enum GameView {
   MainMenuBackground,

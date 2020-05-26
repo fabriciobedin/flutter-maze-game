@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:mazeball/Views/base/baseView.dart';
-import 'package:mazeball/Views/base/viewSwtichMessage.dart';
-import 'package:mazeball/Views/optionBackground.dart';
-import 'package:mazeball/Views/soonDialog.dart';
-import 'package:mazeball/game.dart';
+import 'package:fluttermazegame/Views/base/baseView.dart';
+import 'package:fluttermazegame/Views/base/viewSwtichMessage.dart';
+import 'package:fluttermazegame/Views/optionBackground.dart';
+import 'package:fluttermazegame/game.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class OptionScreen extends StatefulWidget {
@@ -13,7 +12,7 @@ class OptionScreen extends StatefulWidget {
 }
 
 class _OptionScreenState extends State<OptionScreen> {
-  MazeBallGame game;
+  FlutterMazeGame game;
   final widthController = TextEditingController();
   final heightController = TextEditingController();
 
@@ -23,7 +22,7 @@ class _OptionScreenState extends State<OptionScreen> {
   @override
   void initState() {
     super.initState();
-    game = MazeBallGame(startView: GameView.Options);
+    game = FlutterMazeGame(startView: GameView.Options);
     game.blockResize = true;
     loadSettings();
   }

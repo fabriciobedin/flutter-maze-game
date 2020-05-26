@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:mazeball/Views/aboutDialog.dart';
-import 'package:mazeball/Views/base/baseView.dart';
-import 'package:mazeball/Views/option.dart';
-import 'package:mazeball/game.dart';
+import 'package:fluttermazegame/Views/aboutDialog.dart';
+import 'package:fluttermazegame/Views/base/baseView.dart';
+import 'package:fluttermazegame/Views/option.dart';
+import 'package:fluttermazegame/game.dart';
 
 class StartScreen extends StatefulWidget {
   @override
@@ -10,11 +10,11 @@ class StartScreen extends StatefulWidget {
 }
 
 class _StartScreenState extends State<StartScreen> {
-  MazeBallGame game;
+  FlutterMazeGame game;
   @override
   void initState() {
     super.initState();
-    game = MazeBallGame(startView: GameView.MainMenuBackground);
+    game = FlutterMazeGame(startView: GameView.MainMenuBackground);
     game.blockResize = true;
   }
 

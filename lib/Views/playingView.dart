@@ -1,13 +1,13 @@
 import 'dart:ui';
 import 'package:box2d_flame/box2d.dart';
 import 'package:flutter/gestures.dart';
-import 'package:mazeball/Elements/ball.dart';
-import 'package:mazeball/Elements/mazeBuilder.dart';
-import 'package:mazeball/Elements/wall.dart';
-import 'package:mazeball/Views/base/baseView.dart';
-import 'package:mazeball/Views/viewManager.dart';
-import 'package:mazeball/helper.dart';
-import 'package:mazeball/main.dart';
+import 'package:fluttermazegame/Elements/ball.dart';
+import 'package:fluttermazegame/Elements/mazeBuilder.dart';
+import 'package:fluttermazegame/Elements/wall.dart';
+import 'package:fluttermazegame/Views/base/baseView.dart';
+import 'package:fluttermazegame/Views/viewManager.dart';
+import 'package:fluttermazegame/helper.dart';
+import 'package:fluttermazegame/main.dart';
 import 'base/viewSwtichMessage.dart';
 
 class PlayingView extends BaseView {

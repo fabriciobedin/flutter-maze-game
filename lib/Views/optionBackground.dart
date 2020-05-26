@@ -1,9 +1,9 @@
 import 'dart:ui';
 
-import 'package:mazeball/Elements/mazeBuilder.dart';
-import 'package:mazeball/Views/base/baseView.dart';
-import 'package:mazeball/Views/base/viewSwtichMessage.dart';
-import 'package:mazeball/Views/viewManager.dart';
+import 'package:fluttermazegame/Elements/mazeBuilder.dart';
+import 'package:fluttermazegame/Views/base/baseView.dart';
+import 'package:fluttermazegame/Views/base/viewSwtichMessage.dart';
+import 'package:fluttermazegame/Views/viewManager.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../main.dart';

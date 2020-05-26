@@ -1,10 +1,12 @@
 import 'dart:ui';
 import 'package:box2d_flame/box2d.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttermazegame/game.dart';
+import 'package:fluttermazegame/helper.dart';
 
 class Wall {
   //Ref to our game object
-  final MazeBallGame game;
+  final FlutterMazeGame game;
   //Size of the ball, radius in meter
   static final double wallWidth = 5;
   //Physic objects

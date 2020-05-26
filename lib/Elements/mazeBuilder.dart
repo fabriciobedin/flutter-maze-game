@@ -1,5 +1,8 @@
 import 'dart:ui';
 import 'package:box2d_flame/box2d.dart' as box2d;
+import 'package:fluttermazegame/Elements/wall.dart';
+import 'package:fluttermazegame/game.dart';
+import 'package:theseus/theseus.dart';
 
 class MazeBuilder {
   //Size of the maze
@@ -9,7 +12,7 @@ class MazeBuilder {
   Size cellSize;
   //The generator
   OrthogonalMaze _mazeGenerator;
-  final MazeBallGame game;
+  final FlutterMazeGame game;
   //All walls of the maze
   final List<Wall> walls = new List();
 

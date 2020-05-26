@@ -28,6 +28,8 @@ dependencies:
   sensors: ^0.4.2+2
   shared_preferences: ^0.5.7+3
   wakelock: ^0.1.4+1
+  theseus: ^2.0.0
+
 
 
   # The following adds the Cupertino Icons font to your application.
