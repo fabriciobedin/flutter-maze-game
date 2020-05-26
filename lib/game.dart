@@ -33,7 +33,7 @@ class FlutterMazeGame extends Game {
 
   void resize(Size size) {
     paint = Paint();
-    paint.color = Colors.amber;
+    paint.color = Color(0xffffffff);
     //Store size and related rectangle
     screenSize = size;
     _screenRect = Rect.fromLTWH(0, 0, screenSize.width, screenSize.height);
