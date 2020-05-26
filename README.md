@@ -1,4 +1,4 @@
-# fluttermazegame
+# Flutter Maze Game :rocket:
 
 A new Flutter application.
 
