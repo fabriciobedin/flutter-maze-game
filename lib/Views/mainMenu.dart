@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:fluttermazegame/Views/aboutDialog.dart';
 import 'package:fluttermazegame/Views/base/baseView.dart';
-import 'package:fluttermazegame/Views/option.dart';
+import 'package:fluttermazegame/Views/level.dart';
 import 'package:fluttermazegame/game.dart';
 
 class StartScreen extends StatefulWidget {
@@ -29,44 +28,40 @@ class _StartScreenState extends State<StartScreen> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
+                Text("Flutter Maze",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 30,
+                    letterSpacing: 4,
+                    color: Colors.white),
+                ),
                 Text(
-                  "Maze Ball",
+                  "Game",
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      fontSize: 30,
+                      fontSize: 35,
                       letterSpacing: 6,
                       color: Colors.white),
                 ),
+                Text(''),
                 RaisedButton(
                     child: Text("Play"),
                     onPressed: () async {
                       game.pauseGame = true; //Stop anything in our background
                       await Navigator.push(
                           context,
-                          new MaterialPageRoute(
-                              builder: (context) => GameWidget()));
-                      game.pauseGame =
-                          false; //Restart it when the screen finishes
+                          new MaterialPageRoute(builder: (context) => GameWidget()));
+                      game.pauseGame = false; //Restart it when the screen finishes
                     }),
                 RaisedButton(
-                    child: Text("Options"),
+                    child: Text("Level"),
                     onPressed: () async {
                       game.pauseGame = true; //Stop anything in our background
                       await Navigator.push(
                           context,
-                          new MaterialPageRoute(
-                              builder: (context) => OptionScreen()));
+                          new MaterialPageRoute(builder: (context) => LevelScreen()));
                       game.pauseGame = false;
                     }),
-                RaisedButton(
-                    child: Text("About"),
-                    onPressed: () {
-                      showDialog(
-                          context: context,
-                          builder: (BuildContext buildContext) {
-                            return AboutMazeBallDialog();
-                          });
-                    })
               ],
             ),
           ),

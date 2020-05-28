@@ -5,32 +5,40 @@ import 'package:fluttermazegame/game.dart';
 import 'package:fluttermazegame/helper.dart';
 
 class Wall {
-  //Ref to our game object
   final FlutterMazeGame game;
+
   //Size of the ball, radius in meter
   static final double wallWidth = 5;
+
   //Physic objects
   Body body;
   PolygonShape shape;
+
   //Drawing
   Path _path;
   Paint _paint;
 
   Wall(this.game, Vector2 startPoint, Vector2 endPoint) {
     final scaleFactor = game.screenSize.width / game.scale;
+
     //Build the object as a vector2 list based on start and end
     var shapAsVectorList = _buildShapVectorList(startPoint, endPoint);
+
     //Box2D part
     shape = PolygonShape();
+
     //shape.setAsEdge(Vector2.zero(), scaleVectoreBy(endPoint,scaleFactor));
     shape.set(shapAsVectorList, shapAsVectorList.length);
     BodyDef bd = BodyDef();
     bd.linearVelocity = Vector2.zero();
     bd.position = scaleVectoreBy(startPoint, scaleFactor);
+
     //Static objects are not effected by gravity but have collisions
     bd.type = BodyType.STATIC;
+
     body = game.world.createBody(bd);
     body.userData = this; //save a ref to the current object
+
     //Define body properties like weight and density
     FixtureDef fd = FixtureDef();
     fd.density = 20;
@@ -38,11 +46,9 @@ class Wall {
     fd.friction = 0;
     fd.shape = shape;
     body.createFixtureFromFixtureDef(fd);
-    //Create a Path for drawing based on vecotor list, rquies a convert to Offset
     _path = Path();
-    _path.addPolygon(
-        shapAsVectorList.map((vector) => Offset(vector.x, vector.y)).toList(),
-        false);
+    _path.addPolygon(shapAsVectorList.map((vector) => Offset(vector.x, vector.y)).toList(), false);
+
     //Painter, white walls
     _paint = Paint();
     _paint.color = Colors.grey;

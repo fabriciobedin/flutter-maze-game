@@ -1,19 +1,15 @@
 import 'dart:ui';
 import 'package:fluttermazegame/Views/base/baseView.dart';
 import 'package:fluttermazegame/Views/mainMenuBackground.dart';
-import 'package:fluttermazegame/Views/optionBackground.dart';
+import 'package:fluttermazegame/Views/levelBackground.dart';
 import 'package:fluttermazegame/Views/playingView.dart';
 import 'package:fluttermazegame/game.dart';
-
 import 'base/viewSwtichMessage.dart';
 
 class ViewManager {
   List<BaseView> views;
   final FlutterMazeGame game;
-  BaseView get activeView =>
-      views.firstWhere((view) => view.active, orElse: () {
-        return null;
-      });
+  BaseView get activeView => views.firstWhere((view) => view.active, orElse: () => null );
 
   ViewManager(this.game) {
     _generateViews();
@@ -30,10 +26,7 @@ class ViewManager {
 
   void changeView(GameView nextView,{ViewSwitchMessage message}) {
     activeView?.moveToBackground(message: message);
-    var nextActiveView =
-        views.firstWhere((view) => view.view == nextView, orElse: () {
-      return null;
-    });
+    var nextActiveView = views.firstWhere((view) => view.view == nextView, orElse: () => null );
     nextActiveView?.setActive(message: message);
     activeView?.active = false;
     nextActiveView?.active = true;

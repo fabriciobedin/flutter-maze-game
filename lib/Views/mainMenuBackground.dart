@@ -1,12 +1,10 @@
 import 'dart:ui';
-
 import 'package:box2d_flame/box2d.dart';
 import 'package:fluttermazegame/Elements/ball.dart';
 import 'package:fluttermazegame/Elements/wall.dart';
 import 'package:fluttermazegame/Views/base/viewSwtichMessage.dart';
 import 'package:fluttermazegame/Views/viewManager.dart';
 import 'package:fluttermazegame/helper.dart';
-
 import 'base/baseView.dart';
 
 class MainMenuBackground extends BaseView {
@@ -16,8 +14,7 @@ class MainMenuBackground extends BaseView {
   Wall topWall;
   Wall rightWall;
   Wall bottomWall;
-  MainMenuBackground(GameView view, ViewManager viewManager)
-      : super(view, viewManager);
+  MainMenuBackground(GameView view, ViewManager viewManager) : super(view, viewManager);
 
   @override
   void moveToBackground({ViewSwitchMessage message}) {
@@ -37,6 +34,7 @@ class MainMenuBackground extends BaseView {
   void setActive({ViewSwitchMessage message}) {
     if (_initRequired) {
       var screenSize = viewManager.game.screenSize;
+
       player = Ball(
           viewManager.game,
           scaleVectoreBy(
@@ -58,16 +56,14 @@ class MainMenuBackground extends BaseView {
       var rightStart = Vector2(viewManager.game.screenRect.right, 0);
       rightStart.sub(Vector2(Wall.wallWidth, 0));
 
-      var rightEnd =
-          Vector2(viewManager.game.screenRect.right, screenSize.height);
+      var rightEnd = Vector2(viewManager.game.screenRect.right, screenSize.height);
       rightEnd.sub(Vector2(Wall.wallWidth, 0));
       rightWall = Wall(viewManager.game, rightStart, rightEnd);
 
       var bottomStart = Vector2(0, screenSize.height);
       bottomStart.sub(Vector2(0, Wall.wallWidth));
 
-      var bottomEnd =
-          Vector2(screenSize.width, screenSize.height - Wall.wallWidth);
+      var bottomEnd = Vector2(screenSize.width, screenSize.height - Wall.wallWidth);
       bottomEnd.sub(Vector2(0, Wall.wallWidth));
 
       rightEnd.sub(Vector2(Wall.wallWidth, 0));

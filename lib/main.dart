@@ -19,9 +19,7 @@ Future setupFlame() async {
   sharedPrefs = await SharedPreferences.getInstance();
   flameUtil = Util();
   await flameUtil.fullScreen();
-  await flameUtil.setOrientation(
-      DeviceOrientation.portraitUp);
- 
+  await flameUtil.setOrientation(DeviceOrientation.portraitUp);
 }
 
 class App extends StatelessWidget {

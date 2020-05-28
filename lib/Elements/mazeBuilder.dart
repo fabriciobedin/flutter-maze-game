@@ -8,11 +8,14 @@ class MazeBuilder {
   //Size of the maze
   int _width;
   int _height;
+
   //Size for each maze cell
   Size cellSize;
+
   //The generator
   OrthogonalMaze _mazeGenerator;
   final FlutterMazeGame game;
+
   //All walls of the maze
   final List<Wall> walls = new List();
 
@@ -22,6 +25,7 @@ class MazeBuilder {
   void resetMaze({int width = 8, int height = 8, bool buildMaze = true}) {
     _width = width;
     _height = height;
+
     //Calculate the cell size to fit the screen
     cellSize = Size(
       game.screenSize.width / (width),
@@ -35,17 +39,20 @@ class MazeBuilder {
   void generateMaze() {
     //Clear walls
     walls.clear();
+
     //Generate a new maze
     var mazeOption = MazeOptions(width: _width, height: _height);
     _mazeGenerator = OrthogonalMaze(mazeOption);
     _mazeGenerator.generate();
-    //Closing the entrance of  maze ;)
+
+    //Closing the entrance of  maze
     var start = box2d.Vector2.zero();
     walls.add(Wall(
       game,
       start,
       box2d.Vector2(start.x, start.y + cellSize.height),
     ));
+
     //Generating cells row by row
     for (var y = 0; y < _height; ++y) {
       var py = y * cellSize.height;
@@ -66,12 +73,11 @@ class MazeBuilder {
         box2d.Vector2(startPoint.x + cellSize.width, startPoint.y),
       ));
     }
+
     if (cell & Maze.S != Maze.S) {
       var southStart = box2d.Vector2(
           startPoint.x,
-          startPoint.y +
-              (cellSize.height -
-                  (position.y == (_height - 1) ? Wall.wallWidth : 0)));
+          startPoint.y + (cellSize.height - (position.y == (_height - 1) ? Wall.wallWidth : 0)));
       walls.add(Wall(
         game,
         southStart,
@@ -89,16 +95,12 @@ class MazeBuilder {
     }
 
     if (cell & Maze.E != Maze.E) {
-      var eastStart = box2d.Vector2(
-          startPoint.x +
-              (cellSize.width -
-                  (position.x == (_width - 1) ? Wall.wallWidth : 0)),
+      var eastStart = box2d.Vector2(startPoint.x + (cellSize.width - (position.x == (_width - 1) ? Wall.wallWidth : 0)),
           startPoint.y);
       walls.add(Wall(
         game,
         eastStart,
-        box2d.Vector2(
-            eastStart.x, eastStart.y + cellSize.height + Wall.wallWidth),
+        box2d.Vector2(eastStart.x, eastStart.y + cellSize.height + Wall.wallWidth),
       ));
     }
   }

@@ -1,20 +1,17 @@
 import 'dart:ui';
-
 import 'package:fluttermazegame/Elements/mazeBuilder.dart';
 import 'package:fluttermazegame/Views/base/baseView.dart';
 import 'package:fluttermazegame/Views/base/viewSwtichMessage.dart';
 import 'package:fluttermazegame/Views/viewManager.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-
 import '../main.dart';
 
-class OptionBackgroundMessage {
+class LevelBackgroundMessage {
   int width;
   int height;
 
-  OptionBackgroundMessage(this.width, this.height);
+  LevelBackgroundMessage(this.width, this.height);
 
-  OptionBackgroundMessage.eightByEight() {
+  LevelBackgroundMessage.eightByEight() {
     width = 8;
     height = 8;
   }
@@ -47,11 +44,11 @@ class OptionBackgroundView extends BaseView {
 
   @override
   void setActive({ViewSwitchMessage message}) {
-    OptionBackgroundMessage details;
-    if (message?.userData is OptionBackgroundMessage) {
-      details = (message.userData as OptionBackgroundMessage);
+    LevelBackgroundMessage details;
+    if (message?.userData is LevelBackgroundMessage) {
+      details = (message.userData as LevelBackgroundMessage);
     } else {
-      details = OptionBackgroundMessage.eightByEight();
+      details = LevelBackgroundMessage.eightByEight();
     }
 
     if (initRequired) {
@@ -66,7 +63,5 @@ class OptionBackgroundView extends BaseView {
   }
 
   @override
-  void update(double t) {
-    // Nothing to do here ...
-  }
+  void update(double t) {}
 }

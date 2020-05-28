@@ -2,26 +2,28 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fluttermazegame/Views/base/baseView.dart';
 import 'package:fluttermazegame/Views/base/viewSwtichMessage.dart';
-import 'package:fluttermazegame/Views/optionBackground.dart';
+import 'package:fluttermazegame/Views/levelBackground.dart';
 import 'package:fluttermazegame/game.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class OptionScreen extends StatefulWidget {
+class LevelScreen extends StatefulWidget {
   @override
-  _OptionScreenState createState() => _OptionScreenState();
+  _LevelScreenState createState() => _LevelScreenState();
 }
 
-class _OptionScreenState extends State<OptionScreen> {
+class _LevelScreenState extends State<LevelScreen> {
   FlutterMazeGame game;
   final widthController = TextEditingController();
   final heightController = TextEditingController();
 
   int savedHeight = 8;
   int savedWidth = 8;
+  int selectedLevel;
 
   @override
   void initState() {
     super.initState();
+    selectedLevel = 1;
     game = FlutterMazeGame(startView: GameView.Options);
     game.blockResize = true;
     loadSettings();
@@ -55,7 +57,7 @@ class _OptionScreenState extends State<OptionScreen> {
     var height = toInt(heightController.text);
     if (height != null && width != null) {
       setState(() {
-        var newSize = OptionBackgroundMessage(width, height);
+        var newSize = LevelBackgroundMessage(width, height);
         var msg = ViewSwitchMessage();
         msg.userData = newSize;
         game.sendMessageToActiveState(msg);
@@ -75,10 +77,16 @@ class _OptionScreenState extends State<OptionScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      backgroundColor: Colors.black45,
+      backgroundColor: Colors.amber,
       body: Stack(
         children: <Widget>[
           game?.widget ?? SizedBox(),
+//          ButtonBar(
+//            alignment: MainAxisAlignment.center,
+//            children: <Widget>[
+//              Radio(value: 1, groupValue: 0, onChanged: null)
+//            ],
+//          )
           Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -92,7 +100,7 @@ class _OptionScreenState extends State<OptionScreen> {
                         children: <Widget>[
                           Expanded(
                             child: Text(
-                              "Height",
+                              "Easy",
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
@@ -101,6 +109,7 @@ class _OptionScreenState extends State<OptionScreen> {
                                   color: Colors.white),
                             ),
                           ),
+
                           Expanded(
                             child: Text(
                               "Width",
@@ -123,15 +132,23 @@ class _OptionScreenState extends State<OptionScreen> {
                           ),
                           Expanded(
                             flex: 1,
-                            child: _getFormatedTextField(heightController,savedHeight),
+                            child: Radio(value: 1, groupValue: 0, onChanged: null),
                           ),
                           Expanded(
-                            flex: 4,
+                            flex: 2,
                             child: SizedBox(),
                           ),
                           Expanded(
                             flex: 1,
-                            child: _getFormatedTextField(widthController,savedWidth),
+                            child: Radio(value: 1, groupValue: 0, onChanged: null),
+                          ),
+                          Expanded(
+                            flex: 2,
+                            child: SizedBox(),
+                          ),
+                          Expanded(
+                            flex: 1,
+                            child: Radio(value: 1, groupValue: 0, onChanged: null),
                           ),
                           Expanded(
                             flex: 2,
@@ -177,25 +194,7 @@ class _OptionScreenState extends State<OptionScreen> {
         color: Colors.white,
       ),
       textAlign: TextAlign.center,
-      decoration: new InputDecoration(
-        focusColor: Colors.white,
-        enabledBorder: _getDefaultBorder(),
-        focusedBorder: _getDefaultBorder(),
-        border: _getDefaultBorder(),
-      ),
       onChanged: (s) => validateInput(controller, savedValue),
-    );
-  }
-
-  InputBorder _getDefaultBorder() {
-    return OutlineInputBorder(
-      borderRadius: const BorderRadius.all(
-        const Radius.circular(8.0),
-      ),
-      borderSide: new BorderSide(
-        color: Colors.white,
-        width: 1.0,
-      ),
     );
   }
 }

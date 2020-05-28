@@ -24,9 +24,7 @@ class _GameWidgetState extends State<GameWidget> {
   @override
   void initState() {
     super.initState();
-    game.pop = () {
-      Navigator.pop(context);
-    };
+    game.pop = () => Navigator.pop(context);
   }
 
   @override
@@ -61,8 +59,7 @@ class FlutterMazeGame extends Game {
   bool blockResize = false;
 
   FlutterMazeGame({GameView startView = GameView.Playing}) {
-    world = new World.withPool(
-        _gravity, DefaultWorldPool(WORLD_POOL_SIZE, WORLD_POOL_CONTAINER_SIZE));
+    world = new World.withPool(_gravity, DefaultWorldPool(WORLD_POOL_SIZE, WORLD_POOL_CONTAINER_SIZE));
     initialize(startView: startView);
   }
 
@@ -75,10 +72,7 @@ class FlutterMazeGame extends Game {
   }
 
   void resize(Size size) {
-    if(blockResize && screenSize !=null)
-    {
-      return;
-    }
+    if(blockResize && screenSize !=null) return;
     //Store size and related rectangle
     screenSize = size;
     _screenRect = Rect.fromLTWH(0, 0, screenSize.width, screenSize.height);
@@ -88,9 +82,8 @@ class FlutterMazeGame extends Game {
   @override
   void render(Canvas canvas) {
     //If no size information -> leave
-    if (screenSize == null || pauseGame) {
-      return;
-    }
+    if (screenSize == null || pauseGame) return;
+
     //Save the canvas and resize/scale it based on the screenSize
     canvas.save();
     canvas.scale(screenSize.width / scale);
@@ -101,9 +94,7 @@ class FlutterMazeGame extends Game {
 
   @override
   void update(double t) {
-    if (screenSize == null || pauseGame) {
-      return;
-    }
+    if (screenSize == null || pauseGame) return;
 
     //Run any physic related calculation
     world.stepDt(t, 100, 100);
